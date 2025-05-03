@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbawk2gvl2r6t"]
+
+[ext_resource type="PackedScene" uid="uid://6j0eaks5qiqp" path="res://scenes/characters/marisa.tscn" id="1_0e256"]
+[ext_resource type="PackedScene" uid="uid://yangtfodnfwn" path="res://scenes/characters/reimu.tscn" id="1_gte3d"]
+
+[node name="StageYuuka" type="Node2D"]
+
+[node name="Marisa" parent="." instance=ExtResource("1_0e256")]
+
+[node name="Reimu" parent="." instance=ExtResource("1_gte3d")]
+position = Vector2(36.4781, -2.48712)
