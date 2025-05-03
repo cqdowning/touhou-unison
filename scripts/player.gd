@@ -63,4 +63,5 @@ func _shoot():
 		_shoot_frame = 0
 
 func _on_hitbox_entered(body):
-	game_manager.on_player_hit.emit()
+	if body.is_class("Projectile"):
+		game_manager.on_player_hit.emit(body.damage)
