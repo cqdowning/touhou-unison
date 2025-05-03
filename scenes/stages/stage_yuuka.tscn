@@ -11,6 +11,7 @@
 [node name="StageYuuka" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
 
 [node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 625)
@@ -35,9 +36,8 @@ rotation = 3.14159
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_45ahw")
 
-[node name="Yuuka" parent="." node_paths=PackedStringArray("spell_cards") instance=ExtResource("1_hpimq")]
+[node name="Yuuka" parent="." instance=ExtResource("1_hpimq")]
 position = Vector2(566, 51)
-spell_cards = []
 
 [node name="Marisa" parent="." instance=ExtResource("1_0e256")]
 position = Vector2(429, 284)

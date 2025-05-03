@@ -89,11 +89,12 @@ p2_shoot={
 
 [layer_names]
 
-2d_physics/layer_1="Player Environment"
+2d_physics/layer_1="Player"
 2d_physics/layer_2="Player Hitbox"
 2d_physics/layer_3="Player Bullet"
 2d_physics/layer_4="Enemy Hitbox"
 2d_physics/layer_5="Enemy Bullet"
+2d_physics/layer_6="Environment"
 
 [rendering]
 

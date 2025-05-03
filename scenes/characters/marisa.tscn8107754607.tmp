@@ -20,6 +20,12 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("1_w2ddu")
 player_id = 2
+damage = null
+speed = null
+focus_speed = null
+shoot_rate = null
+shoot_speed = null
+shoot_offset = null
 projectile = ExtResource("2_7ok74")
 metadata/_custom_type_script = "uid://bkob1ov6wu2tx"
 
@@ -37,8 +43,6 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_p4c7e")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_2gqs3")
