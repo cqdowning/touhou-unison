@@ -6,8 +6,7 @@ var _time: int = 30
 var _damage: int = 20
 var _timer: Timer
 var _owner: Boss
-var _frame: int = 0
-var _attack_time: float = 5
+var _attack_time: float = 1
 var _can_move : bool = true
 
 func _init(owner: Boss):

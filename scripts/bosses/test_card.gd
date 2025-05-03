@@ -1,10 +1,21 @@
+class_name TestCard
 extends SpellCard
 
+@onready var ball : PackedScene
+
+func _init(owner: Boss) -> void:
+	ball = preload("res://scenes/projectiles/ball.tscn")
+	super._init(owner)
+	
 func attack():
-	if _frame == 20:
-		var new_projectile: ProjectileEnemy = owner.red_bullet.instantiate()
-		get_tree().current_scene.add_child(new_projectile)
-		
+	for i : float in range(0, 16):
+		var temp: ProjectileEnemy = ball.instantiate()
+		_owner.add_child(temp)
 		# Set projectile properties
-		new_projectile.set_properties(_damage, 200)
-		new_projectile.launch(owner.global_position, Vector2(0, 1))
+		temp.set_properties(_damage, 10)
+		temp.launch(_owner.global_position, Vector2.DOWN.rotated(2*PI * i/16.0))
+		temp = ball.instantiate()
+		_owner.add_child(temp)
+		# Set projectile properties
+		temp.set_properties(_damage, 7)
+		temp.launch(_owner.global_position, Vector2.DOWN.rotated(2*PI * (i/16.0 + 1/32.0)))
