@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://ovk5p6l6o2lk"]
+[gd_scene load_steps=5 format=3 uid="uid://ovk5p6l6o2lk"]
 
-[node name="Yuuka" type="Node2D"]
+[ext_resource type="Script" uid="uid://dkok2ygnqsmro" path="res://scripts/bosses/boss.gd" id="1_mv8k4"]
+[ext_resource type="PackedScene" uid="uid://by2b1dxp7najo" path="res://scenes/projectiles/red_bullet.tscn" id="2_gqb70"]
+
+[sub_resource type="Gradient" id="Gradient_t42ex"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mv8k4"]
+gradient = SubResource("Gradient_t42ex")
+
+[node name="Yuuka" type="Node2D" node_paths=PackedStringArray("spell_cards")]
+script = ExtResource("1_mv8k4")
+spell_cards = [null]
+red_bullet = ExtResource("2_gqb70")
+metadata/_custom_type_script = "uid://dkok2ygnqsmro"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_mv8k4")

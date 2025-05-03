@@ -1,6 +1,6 @@
 class_name GameManager
 extends Node
 
-@export var health: float = 0
+@export var player_health: int = 0
 
 signal on_player_hit

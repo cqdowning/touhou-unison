@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var player_id: int = 1
 
 @export_category("Stats")
-@export var damage: float = 10.0
+@export var damage: int = 10
 @export var speed: float = 450.0
 @export var focus_speed: float = 250.0
 @export var shoot_rate: int = 4
