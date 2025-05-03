@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ovk5p6l6o2lk"]
+[gd_scene load_steps=6 format=3 uid="uid://ovk5p6l6o2lk"]
 
 [ext_resource type="Script" uid="uid://dkok2ygnqsmro" path="res://scripts/bosses/boss.gd" id="1_mv8k4"]
 [ext_resource type="PackedScene" uid="uid://by2b1dxp7najo" path="res://scenes/projectiles/red_bullet.tscn" id="2_gqb70"]
@@ -8,11 +8,18 @@
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mv8k4"]
 gradient = SubResource("Gradient_t42ex")
 
-[node name="Yuuka" type="Node2D" node_paths=PackedStringArray("spell_cards")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqb70"]
+size = Vector2(66, 66)
+
+[node name="Yuuka" type="Node2D"]
 script = ExtResource("1_mv8k4")
-spell_cards = [null]
 red_bullet = ExtResource("2_gqb70")
 metadata/_custom_type_script = "uid://dkok2ygnqsmro"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_mv8k4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gqb70")

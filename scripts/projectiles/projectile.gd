@@ -20,7 +20,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	position += direction * speed * delta
+	position += direction * speed
 
 
 func set_properties(proj_damage: float, proj_speed: float) -> void:
@@ -29,7 +29,7 @@ func set_properties(proj_damage: float, proj_speed: float) -> void:
 
 
 func launch(spawn_position: Vector2, launch_direction: Vector2) -> void:
-	position = spawn_position
+	global_position = spawn_position
 	direction = launch_direction.normalized()
 
 
