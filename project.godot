@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 game_manager="*res://scripts/game_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 p1_up={

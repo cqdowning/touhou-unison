@@ -19,4 +19,5 @@ func next_spell():
 	_spell_index += 1
 
 func _physics_process(delta: float) -> void:
-	_current_spell_card.attack()
+	#_current_spell_card.attack()
+	pass

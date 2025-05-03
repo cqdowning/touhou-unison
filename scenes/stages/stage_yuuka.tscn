@@ -1,13 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbawk2gvl2r6t"]
+[gd_scene load_steps=6 format=3 uid="uid://cbawk2gvl2r6t"]
 
 [ext_resource type="PackedScene" uid="uid://6j0eaks5qiqp" path="res://scenes/characters/marisa.tscn" id="1_0e256"]
 [ext_resource type="PackedScene" uid="uid://yangtfodnfwn" path="res://scenes/characters/reimu.tscn" id="1_gte3d"]
 [ext_resource type="PackedScene" uid="uid://ovk5p6l6o2lk" path="res://scenes/bosses/yuuka.tscn" id="1_hpimq"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hpimq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_45ahw"]
+
 [node name="StageYuuka" type="Node2D"]
 
-[node name="Yuuka" parent="." instance=ExtResource("1_hpimq")]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 625)
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_hpimq")
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(20, 0)
+rotation = 1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_45ahw")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(800, 0)
+rotation = 4.71239
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_45ahw")
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 20)
+rotation = 3.14159
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_45ahw")
+
+[node name="Yuuka" parent="." node_paths=PackedStringArray("spell_cards") instance=ExtResource("1_hpimq")]
 position = Vector2(566, 51)
+spell_cards = []
 
 [node name="Marisa" parent="." instance=ExtResource("1_0e256")]
 position = Vector2(429, 284)
