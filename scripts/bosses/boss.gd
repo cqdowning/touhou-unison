@@ -10,13 +10,44 @@ extends Node2D
 var _current_spell_card: SpellCard
 var _spell_index: int = 0
 
+var _attack_timer: Timer
+var _move_timer: Timer
+
+func _init() -> void:
+	_attack_timer = Timer.new()
+	add_child(_attack_timer)
+	_attack_timer.one_shot = false
+	_attack_timer.timeout.connect(attack)
+
 func begin():
+	_attack_timer.stop()
+	_move_timer.stop()
 	next_spell()
 	
 func next_spell():
 	_current_spell_card = spell_cards[_current_spell_card].init(self)
 	_current_spell_card.begin()
 	_spell_index += 1
+	_attack_timer.wait_time = _current_spell_card._attack_time
+	_attack_timer.start(_current_spell_card._attack_time)
+	if _current_spell_card._can_move:
+		_move_timer.start()
+	
 
 func _physics_process(delta: float) -> void:
 	_current_spell_card.attack()
+
+func take_damage(dmg:int) -> void:
+	_current_spell_card._health -= dmg
+	if _current_spell_card._health <= 0:
+		end_spell() 
+		
+func attack() -> void:
+	_current_spell_card.attack()
+	_attack_timer.start(_current_spell_card._attack_time)
+	pass
+
+func end_spell() -> void:
+	if _spell_index < spell_cards.size() - 1:
+		next_spell()
+	pass
