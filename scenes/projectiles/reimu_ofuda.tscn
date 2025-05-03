@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dthwfr8yibl15"]
+
+[ext_resource type="Script" uid="uid://neeowjsvxghe" path="res://scripts/projectiles/projectile_player.gd" id="1_v6n4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6n4r"]
+
+[sub_resource type="Gradient" id="Gradient_rhnwa"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j437s"]
+gradient = SubResource("Gradient_rhnwa")
+width = 16
+height = 16
+
+[node name="Ofuda" type="Area2D"]
+script = ExtResource("1_v6n4r")
+metadata/_custom_type_script = "uid://neeowjsvxghe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v6n4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_j437s")

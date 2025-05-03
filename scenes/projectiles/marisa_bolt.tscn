@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceiia80j105y2"]
+
+[ext_resource type="Script" uid="uid://neeowjsvxghe" path="res://scripts/projectiles/projectile_player.gd" id="1_os7u1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os7u1"]
+
+[sub_resource type="Gradient" id="Gradient_bgd68"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2eg4q"]
+gradient = SubResource("Gradient_bgd68")
+width = 16
+height = 16
+
+[node name="MarisaBolt" type="Area2D"]
+script = ExtResource("1_os7u1")
+metadata/_custom_type_script = "uid://neeowjsvxghe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_os7u1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_2eg4q")
