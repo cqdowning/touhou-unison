@@ -24,7 +24,7 @@ var _move_input: Vector2
 @onready var pushbox: Area2D = $Pushbox
 
 func _ready():
-	hitbox.body_entered.connect(_on_hitbox_entered)
+	hitbox.area_entered.connect(_on_hitbox_entered)
 
 func _process(delta):
 	
@@ -81,11 +81,10 @@ func _shoot():
 			
 			# Set projectile properties
 			new_projectile.set_properties(damage, shoot_speed)
-			new_projectile.launch(Vector2(self.global_position.x + shoot_offset*i, self.global_position.y - 30), Vector2(0, -1))
+			new_projectile.launch(Vector2(self.global_position.x + shoot_offset*i, self.global_position.y - 50), Vector2(0, -1))
 		_shoot_frame = 0
 
-func _on_hitbox_entered(body):
-	if body.is_class("Projectile"):
-		game_manager.on_player_hit.emit(body.damage)
-
+func _on_hitbox_entered(area: Area2D):
+	if area is Projectile:
+		game_manager.on_player_hit.emit(area.damage)
 		

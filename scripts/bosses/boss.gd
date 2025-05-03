@@ -11,9 +11,11 @@ var _current_spell_card: SpellCard
 var _spell_index: int = 0
 var _lerp_speed: float = 0.5
 
-@onready var _target: Vector2 = self.global_position
 var _attack_timer: Timer
 var _move_timer: Timer
+
+@onready var hitbox: Area2D = $Hitbox
+@onready var _target: Vector2 = self.global_position
 
 func _ready() -> void:
 	_attack_timer = Timer.new()
@@ -21,6 +23,7 @@ func _ready() -> void:
 	_attack_timer.one_shot = false
 	_attack_timer.timeout.connect(attack)
 	_spell_cards.append(TestCard.new(self))
+	hitbox.area_entered.connect(_on_hitbox_entered)
 	begin()
 
 func begin():
@@ -60,3 +63,8 @@ func end_spell() -> void:
 	if _spell_index > _spell_cards.size():
 		next_spell()
 	pass
+	
+func _on_hitbox_entered(area: Area2D):
+	if area is ProjectilePlayer:
+		game_manager.on_boss_hit.emit(area.damage)
+		_current_spell_card.damage_card(area.damage)

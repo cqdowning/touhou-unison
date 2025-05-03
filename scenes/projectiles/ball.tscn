@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cq0prvrumg40v"]
 
-[ext_resource type="Script" uid="uid://bw85hn5tjuup3" path="res://scripts/projectiles/ball.gd" id="1_ornoh"]
+[ext_resource type="Script" path="res://scripts/projectiles/ball.gd" id="1_ornoh"]
 [ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="2_3vvdo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ornoh"]
 radius = 7.0
 
 [node name="Ball" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("1_ornoh")
 metadata/_custom_type_script = "uid://uthly82v3vdf"
 

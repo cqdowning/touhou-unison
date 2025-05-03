@@ -23,5 +23,9 @@ func begin():
 func attack():
 	pass
 
+func damage_card(amnt: float):
+	_health -= amnt
+	print("Card Health: ", _health)
+
 func _on_timeout():
 	pass # End the game
