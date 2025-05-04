@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://tft5btdqt8ft"]
+[gd_scene load_steps=6 format=3 uid="uid://tft5btdqt8ft"]
 
 [ext_resource type="Script" uid="uid://bbmy7iuc1hym6" path="res://scripts/overlay.gd" id="1_d607a"]
-
-[sub_resource type="Gradient" id="Gradient_d607a"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2eog"]
-gradient = SubResource("Gradient_d607a")
+[ext_resource type="Texture2D" uid="uid://ci58ox7nh3dt8" path="res://sprites/TouhouUnisonOverlay.png" id="2_r2eog"]
 
 [sub_resource type="Theme" id="Theme_14nai"]
 
@@ -19,34 +15,19 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_d607a")
 metadata/_custom_type_script = "uid://bbmy7iuc1hym6"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1005.5, 403)
-scale = Vector2(6.85938, 13.5938)
-texture = SubResource("GradientTexture2D_r2eog")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(275, -749)
-scale = Vector2(148.354, 24.3027)
-texture = SubResource("GradientTexture2D_r2eog")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(576, 1362)
-scale = Vector2(52.3664, 18.8181)
-texture = SubResource("GradientTexture2D_r2eog")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-558, 288.859)
-scale = Vector2(18.4844, 16.6294)
-texture = SubResource("GradientTexture2D_r2eog")
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1200.0
+offset_bottom = 800.0
+texture = ExtResource("2_r2eog")
 
 [node name="BossHealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -450.0
-offset_top = 10.0
-offset_right = 99.0
-offset_bottom = 30.0
+offset_left = -457.0
+offset_top = 26.0
+offset_right = 92.0
+offset_bottom = 46.0
 grow_horizontal = 2
 theme = SubResource("Theme_14nai")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d607a")
@@ -57,10 +38,10 @@ show_percentage = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 324.0
-offset_top = 10.0
-offset_right = 548.0
-offset_bottom = 30.0
+offset_left = 353.0
+offset_top = 69.0
+offset_right = 577.0
+offset_bottom = 89.0
 grow_horizontal = 2
 theme = SubResource("Theme_14nai")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r2eog")
@@ -68,9 +49,9 @@ value = 50.0
 show_percentage = false
 
 [node name="Time" type="Label" parent="."]
-offset_left = 725.0
-offset_top = 14.0
-offset_right = 765.0
-offset_bottom = 37.0
+offset_left = 714.0
+offset_top = 12.0
+offset_right = 760.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 40
 text = "30"
