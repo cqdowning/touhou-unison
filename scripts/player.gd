@@ -112,6 +112,7 @@ func add_bullets(pool : Node, count : int) -> Array[ProjectilePlayer]:
 
 func _on_hitbox_entered(area: Area2D):
 	if area is Projectile:
+		print(str("P", player_id, " Hit"))
 		game_manager.on_player_hit.emit(area.damage)
 		area.expire()
 		
