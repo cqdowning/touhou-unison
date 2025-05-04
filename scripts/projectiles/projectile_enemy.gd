@@ -17,7 +17,7 @@ func spawn(target : int = -1) -> void:
 	if target == Enums.players.Reimu:
 		sprite.self_modulate = Color.RED
 	elif target == Enums.players.Marisa:
-		sprite.self_modulate = Color.BLUE
+		sprite.self_modulate = Color.YELLOW
 	else:
 		sprite.self_modulate = Color.GREEN
 	is_active = true
