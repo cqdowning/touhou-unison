@@ -63,8 +63,10 @@ func move() -> void:
 	_target = Vector2(randf_range(50, 800), randf_range(50, 100))
 
 func end_spell() -> void:
-	if _spell_index > _spell_cards.size():
+	if _spell_index < _spell_cards.size():
 		next_spell()
+	else:
+		print("WIN")
 
 func _init_pool(pool : Node, bullet_type : Enums.bullet_types, initial : int) -> void:
 	pool.set_as_top_level(true)
