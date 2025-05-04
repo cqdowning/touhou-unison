@@ -32,10 +32,9 @@ func attack():
 			_spread_shot(9, 3, -1.0/16, 1.0/16, Enums.players.Reimu, _owner.global_position)
 			_spread_shot(9, 3, -1.0/16, 1.0/16, Enums.players.Marisa, _owner._clone.global_position)
 			_burst(16, 4, 0, _owner.global_position)
-			flip = false
 		else:
 			_spread_shot(9, 3, -1.0/16, 1.0/16, Enums.players.Reimu, _owner._clone.global_position)
 			_spread_shot(9, 3, -1.0/16, 1.0/16, Enums.players.Marisa, _owner.global_position)
 			_burst(16, 4, 0, _owner._clone.global_position)
-			flip = true
+		flip = !flip
 		super()

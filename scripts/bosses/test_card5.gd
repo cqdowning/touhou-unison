@@ -4,6 +4,7 @@ var _turn_rate : float = 1.0/64
 var offset : float
 var _frame : int
 func _init(owner: Boss) -> void:
+	_health = 2000
 	offset = 0
 	can_move = false
 	_attack_time = 0.3

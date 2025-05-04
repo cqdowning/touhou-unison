@@ -16,6 +16,10 @@ extends CharacterBody2D
 @export_category("Projectile")
 @export var projectile: PackedScene
 
+@export_category("Character Sprite")
+@export var characterSprite_Idle : Texture2D
+@export var characterSprite_Move : Texture2D
+
 var _shooting: bool = false
 var _shoot_frame: int = 0
 var _current_speed: float = 0
@@ -23,6 +27,7 @@ var _move_input: Vector2
 var _pool: Node2D
 var _invincible_frames: int = 0
 
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var pushbox: Area2D = $Pushbox
 
@@ -39,6 +44,17 @@ func _process(delta):
 	
 	_current_speed = speed
 	hitbox.visible = false
+	
+	if _move_input.x > 0:
+		sprite.texture = characterSprite_Move
+		sprite.flip_h = true
+	elif _move_input.x < 0:
+		sprite.texture = characterSprite_Move
+		sprite.flip_h = false
+	else:
+		sprite.texture = characterSprite_Idle
+		sprite.flip_h = false
+	
 	if Input.is_action_pressed(str("p", player_id, "_focus")):
 		_current_speed = focus_speed
 		hitbox.visible = true

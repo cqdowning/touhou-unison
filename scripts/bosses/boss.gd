@@ -15,11 +15,15 @@ var _clone: YuukaClone
 
 const CLONE: PackedScene = preload("res://scenes/bosses/yuuka_clone.tscn")
 
+@export_category("Character Sprite")
+@export var characterSprite_Idle : Texture2D
+@export var characterSprite_Move : Texture2D
+
 signal on_attack_end
 
 @onready var P1 : Player = get_tree().get_first_node_in_group("Reimu")
 @onready var P2 : Player = get_tree().get_first_node_in_group("Marisa")
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var _sprite : Sprite2D = $Sprite2D
 
 @onready var hitbox: Area2D = $Hitbox
 @onready var _target: Vector2 = self.global_position
@@ -45,12 +49,12 @@ func _ready() -> void:
 	_pool_2 = Node2D.new()
 	add_child(_pool_2)
 	_init_pool(_pool_2, Enums.bullet_types.curved_shot, 64)
-	_spell_cards.append(TestCard6.new(self))
 	_spell_cards.append(TestCard.new(self))
 	_spell_cards.append(TestCard2.new(self))
-	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard3.new(self))
+	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard5.new(self))
+	_spell_cards.append(TestCard6.new(self))
 	on_attack_end.connect(_attack_timer.start)
 	hitbox.area_entered.connect(_on_hitbox_entered)
 	begin()
@@ -76,7 +80,15 @@ func next_spell():
 func _physics_process(delta: float) -> void:
 	if abs(_target - self.global_position) > Vector2(0.1,0.1):
 		self.global_position = lerp(self.global_position, _target, _lerp_speed)
+		if _target.x > self.global_position.x:
+			_sprite.texture = characterSprite_Move
+			_sprite.flip_h = true
+		elif _target.x < self.global_position.x:
+			_sprite.texture = characterSprite_Move
+			_sprite.flip_h = false
 	elif _move_timer.is_stopped() and _current_spell_card.can_move:
+		_sprite.texture = characterSprite_Idle
+		_sprite.flip_h = false
 		_move_timer.start()
 
 func attack() -> void:
