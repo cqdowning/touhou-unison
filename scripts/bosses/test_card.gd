@@ -6,6 +6,7 @@ func _init(owner: Boss) -> void:
 	super._init(owner)
 	
 func attack():
+	super()
 	_burst(16, 10, 0)
 	_burst(16, 9, 1.0/32)
 	
