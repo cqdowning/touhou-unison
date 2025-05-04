@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cm55gmu5i34ch"
+path="res://.godot/imported/Player Hit.ogg-b7353057b095429d737d75580e3995ad.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/Player Hit.ogg"
+dest_files=["res://.godot/imported/Player Hit.ogg-b7353057b095429d737d75580e3995ad.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

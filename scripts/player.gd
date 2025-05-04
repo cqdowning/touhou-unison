@@ -15,26 +15,26 @@ extends CharacterBody2D
 @export_category("Projectile")
 @export var projectile: PackedScene
 
-
 var _shooting: bool = false
 var _shoot_frame: int = 0
+var _current_speed: float = 0
+var _move_input: Vector2
 
-@onready var hitbox: Area2D = $Area2D
+@onready var hitbox: Area2D = $Hitbox
+@onready var pushbox: Area2D = $Pushbox
 
 func _ready():
-	hitbox.body_entered.connect(_on_hitbox_entered)
+	hitbox.area_entered.connect(_on_hitbox_entered)
 
 func _process(delta):
-	var move_input = Vector2()
+	
 
-	move_input.x = Input.get_action_strength(str("p", player_id, "_right")) - Input.get_action_strength(str("p", player_id, "_left"))
-	move_input.y = Input.get_action_strength(str("p", player_id, "_down")) - Input.get_action_strength(str("p", player_id, "_up"))
+	_move_input.x = Input.get_action_strength(str("p", player_id, "_right")) - Input.get_action_strength(str("p", player_id, "_left"))
+	_move_input.y = Input.get_action_strength(str("p", player_id, "_down")) - Input.get_action_strength(str("p", player_id, "_up"))
 	
-	var current_speed = speed
+	_current_speed = speed
 	if Input.is_action_pressed(str("p", player_id, "_focus")):
-		current_speed = focus_speed
-	
-	velocity = move_input.normalized() * current_speed
+		_current_speed = focus_speed
 	
 	if Input.is_action_just_pressed(str("p", player_id, "_shoot")):
 		_shooting = true
@@ -43,6 +43,28 @@ func _process(delta):
 		_shooting = false
 
 func _physics_process(_delta):
+	velocity = _move_input.normalized() * _current_speed
+	for area: Area2D in pushbox.get_overlapping_areas():
+		if area.owner is Player:
+			var other: Player = area.owner
+			var other_vel = other.velocity
+			if self.velocity.x > 0:
+				if other.global_position.x > self.global_position.x:
+					self.velocity.x = (other_vel.x + self.velocity.x) / 2
+					other.global_position.x += self.get_position_delta().x
+			elif self.velocity.x < 0:
+				if other.global_position.x < self.global_position.x:
+					self.velocity.x = (other_vel.x + self.velocity.x) / 2
+					other.global_position.x += self.get_position_delta().x
+			if self.velocity.y > 0:
+				if other.global_position.y > self.global_position.y:
+					self.velocity.y = (other_vel.y + self.velocity.y) / 2
+					other.global_position.y += self.get_position_delta().y
+			elif self.velocity.y < 0:
+				if other.global_position.y < self.global_position.y:
+					self.velocity.y = (other_vel.y + self.velocity.y) / 2
+					other.global_position.y += self.get_position_delta().y
+	
 	# Apply movement
 	move_and_slide()
 	
@@ -59,9 +81,10 @@ func _shoot():
 			
 			# Set projectile properties
 			new_projectile.set_properties(damage, shoot_speed)
-			new_projectile.launch(Vector2(self.global_position.x + shoot_offset*i, self.global_position.y - 30), Vector2(0, -1))
+			new_projectile.launch(Vector2(self.global_position.x + shoot_offset*i, self.global_position.y - 50), Vector2(0, -1))
 		_shoot_frame = 0
 
-func _on_hitbox_entered(body):
-	if body.is_class("Projectile"):
-		game_manager.on_player_hit.emit(body.damage)
+func _on_hitbox_entered(area: Area2D):
+	if area is Projectile:
+		game_manager.on_player_hit.emit(area.damage)
+		

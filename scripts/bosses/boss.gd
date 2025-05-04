@@ -6,10 +6,12 @@ var _current_spell_card: SpellCard
 var _spell_index: int = 0
 var _lerp_speed: float = 0.1
 
-@onready var _target: Vector2 = self.global_position
 var _attack_timer: Timer
 var _move_timer: Timer
 var _pool_1: Node2D
+
+@onready var hitbox: Area2D = $Hitbox
+@onready var _target: Vector2 = self.global_position
 
 func _ready() -> void:
 	_attack_timer = Timer.new()
@@ -25,6 +27,7 @@ func _ready() -> void:
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
 	_spell_cards.append(TestCard.new(self))
+	hitbox.area_entered.connect(_on_hitbox_entered)
 	begin()
 
 func begin():
@@ -99,3 +102,6 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 		output.append(temp)
 	return output
 	
+func _on_hitbox_entered(area: Area2D):
+	if area is ProjectilePlayer:
+		_current_spell_card.damage_card(area.damage)

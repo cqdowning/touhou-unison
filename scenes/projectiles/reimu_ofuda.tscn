@@ -12,6 +12,8 @@ width = 16
 height = 16
 
 [node name="Ofuda" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
 script = ExtResource("1_v6n4r")
 metadata/_custom_type_script = "uid://neeowjsvxghe"
 

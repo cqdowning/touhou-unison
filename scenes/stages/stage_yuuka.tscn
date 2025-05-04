@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbawk2gvl2r6t"]
+[gd_scene load_steps=7 format=3 uid="uid://cbawk2gvl2r6t"]
 
 [ext_resource type="PackedScene" uid="uid://6j0eaks5qiqp" path="res://scenes/characters/marisa.tscn" id="1_0e256"]
+[ext_resource type="PackedScene" uid="uid://tft5btdqt8ft" path="res://scenes/overlay.tscn" id="1_45ahw"]
 [ext_resource type="PackedScene" uid="uid://yangtfodnfwn" path="res://scenes/characters/reimu.tscn" id="1_gte3d"]
 [ext_resource type="PackedScene" uid="uid://ovk5p6l6o2lk" path="res://scenes/bosses/yuuka.tscn" id="1_hpimq"]
 
@@ -10,7 +11,10 @@
 
 [node name="StageYuuka" type="Node2D"]
 
+[node name="Overlay" parent="." instance=ExtResource("1_45ahw")]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
 
 [node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 625)

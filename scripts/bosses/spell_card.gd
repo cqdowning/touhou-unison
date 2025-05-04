@@ -18,6 +18,7 @@ func _init(owner: Boss):
 	
 func begin():
 	_timer.start(_time)
+	game_manager.on_new_card.emit(_health)
 
 func attack():
 	pass
@@ -30,6 +31,10 @@ func _burst(bullet_count : int, bullet_speed : float, offset : float):
 		temp.set_properties(_damage, bullet_speed)
 		temp.spawn()
 		temp.launch(_owner.global_position, Vector2.DOWN.rotated(2*PI * (i/bullet_count + offset)))
+
+func damage_card(amnt: float):
+	_health -= amnt
+	game_manager.on_boss_health_changed.emit(_health)
 
 func _on_timeout():
 	pass # End the game
