@@ -2,7 +2,7 @@ class_name TestCard
 extends SpellCard
 
 func _init(owner: Boss) -> void:
-	_attack_time = 0.1
+	_attack_time = 1
 	super._init(owner)
 	
 func attack():
