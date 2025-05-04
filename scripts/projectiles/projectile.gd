@@ -33,11 +33,9 @@ func set_properties(proj_damage: float, proj_speed: float) -> void:
 	damage = proj_damage
 	speed = proj_speed
 
-
 func launch(spawn_position: Vector2, launch_direction: Vector2) -> void:
 	global_position = spawn_position
 	direction = launch_direction.normalized()
-
 
 func _on_body_entered(_body: Node2D) -> void:
 	pass
