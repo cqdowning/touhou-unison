@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var shoot_rate: int = 4
 @export var shoot_speed: float = 15.0
 @export var shoot_offset: float = 10.0
+@export var invincible_frames_amount: int = 120
 
 @export_category("Projectile")
 @export var projectile: PackedScene
@@ -20,6 +21,7 @@ var _shoot_frame: int = 0
 var _current_speed: float = 0
 var _move_input: Vector2
 var _pool: Node2D
+var _invincible_frames: int = 0
 
 @onready var hitbox: Area2D = $Hitbox
 @onready var pushbox: Area2D = $Pushbox
@@ -45,6 +47,11 @@ func _process(delta):
 		_shooting = false
 
 func _physics_process(_delta):
+	_invincible_frames = clampi(_invincible_frames - 1, 0, invincible_frames_amount)
+	if _invincible_frames != 0 and _invincible_frames % 6 == 0:
+		self.visible = !self.visible
+	else:
+		self.visible = true
 	velocity = _move_input.normalized() * _current_speed
 	for area: Area2D in pushbox.get_overlapping_areas():
 		if area.owner is Player:
@@ -111,8 +118,9 @@ func add_bullets(pool : Node, count : int) -> Array[ProjectilePlayer]:
 	return output
 
 func _on_hitbox_entered(area: Area2D):
-	if area is Projectile:
+	if area is Projectile and _invincible_frames == 0:
 		print(str("P", player_id, " Hit"))
 		game_manager.on_player_hit.emit(area.damage)
 		area.expire()
+		_invincible_frames = invincible_frames_amount
 		
