@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var speed: float = 450.0
 @export var focus_speed: float = 250.0
 @export var shoot_rate: int = 4
-@export var shoot_speed: float = 10.0
+@export var shoot_speed: float = 15.0
 @export var shoot_offset: float = 10.0
 
 @export_category("Projectile")
