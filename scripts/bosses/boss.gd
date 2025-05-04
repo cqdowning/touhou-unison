@@ -29,6 +29,7 @@ func _ready() -> void:
 	_pool_1 = Node2D.new()
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
+	_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard.new(self))
 	hitbox.area_entered.connect(_on_hitbox_entered)
 	begin()
@@ -48,13 +49,11 @@ func next_spell():
 		_move_timer.start()
 
 func _physics_process(delta: float) -> void:
-	if _current_spell_card._can_move:
-		if abs(_target - self.global_position) > Vector2(0.1,0.1):
-			self.global_position = lerp(self.global_position, _target, _lerp_speed)
-		elif _move_timer.is_stopped():
-			_move_timer.start()
-	pass
-		
+	if abs(_target - self.global_position) > Vector2(0.1,0.1):
+		self.global_position = lerp(self.global_position, _target, _lerp_speed)
+	elif _move_timer.is_stopped() and _current_spell_card._can_move:
+		_move_timer.start()
+
 func attack() -> void:
 	_current_spell_card.attack()
 	_attack_timer.start(_current_spell_card._attack_time)
