@@ -11,6 +11,7 @@ func _init(owner: Boss) -> void:
 	_owner.move_target(Vector2(430, 100))
 	
 func attack():
+	game_manager.on_attack_start.emit()
 	for i in range(0,16):
 		var particle = CHARGE.instantiate()
 		particle.change_color(Color.YELLOW)

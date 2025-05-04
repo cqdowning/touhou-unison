@@ -10,6 +10,7 @@ func _init(owner: Boss) -> void:
 	move_time = 5
 	
 func attack():
+	game_manager.on_attack_start.emit()
 	_owner._move_timer.paused = true
 	var bullet_count = 16
 	var fan_count = 4

@@ -27,6 +27,7 @@ func begin():
 func attack():
 	game_manager.on_timer_update.emit(_timer.time_left)
 	_owner.on_attack_end.emit(self._attack_time)
+	game_manager.on_attack_end.emit()
 	pass
 func attack1():
 	pass
@@ -36,6 +37,8 @@ func attack3():
 	pass
 
 func _burst(bullet_count : int, bullet_speed : float, offset : float, spawn_pos : Vector2 = _owner.global_position):
+	if _owner == null:
+		pass
 	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
 	for i : float in range(0, bullet_count):
 		var temp : ProjectileEnemy = bullet_pool[i]
@@ -51,7 +54,7 @@ func _burst_curve(bullet_count : int, bullet_speed : float, offset : float, spaw
 		# Set projectile properties
 		temp.set_properties(_damage, bullet_speed, curve)
 		temp.spawn()
-		temp.launch(spawn_pos, Vector2.DOWN.rotated(2*PI * (i/bullet_count + offset)))
+		temp.launch(spawn_pos, Vector2.DOWN.rotated(2*PI * (i/(bullet_count-1) + offset)))
 
 func _target_shot(target : int, bullet_speed : float, offset : float, spawn_pos : Vector2 = _owner.global_position):
 	var temp : ProjectileEnemy = _owner.get_bullets(Enums.bullet_types.straight_shot, 1).front()
@@ -82,7 +85,7 @@ func _spread_shot(bullet_count : int, bullet_speed : float, start_angle : float,
 		# Set projectile properties
 		temp.set_properties(_damage, bullet_speed)
 		temp.spawn(target)
-		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / bullet_count)))
+		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / (bullet_count-1))))
 
 func _fan_shot(bullet_count : int, bullet_speed : float, start_angle : float, end_angle : float, target : int = -1, spawn_pos : Vector2 = _owner.global_position):
 	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
@@ -99,7 +102,7 @@ func _fan_shot(bullet_count : int, bullet_speed : float, start_angle : float, en
 		# Set projectile properties
 		temp.set_properties(_damage, bullet_speed)
 		temp.spawn(target)
-		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / bullet_count)))
+		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / (bullet_count-1))))
 		await _owner.get_tree().create_timer(0.1).timeout
 
 func damage_card(amnt: float):
