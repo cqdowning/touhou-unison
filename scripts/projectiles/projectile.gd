@@ -35,7 +35,6 @@ func set_properties(proj_damage: float, proj_speed: float) -> void:
 
 
 func launch(spawn_position: Vector2, launch_direction: Vector2) -> void:
-	spawn()
 	global_position = spawn_position
 	direction = launch_direction.normalized()
 

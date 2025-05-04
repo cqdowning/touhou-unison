@@ -10,7 +10,7 @@ gradient = SubResource("Gradient_mv8k4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqb70"]
 size = Vector2(66, 66)
 
-[node name="Yuuka" type="Node2D"]
+[node name="Yuuka" type="Node2D" groups=["Boss"]]
 script = ExtResource("1_mv8k4")
 metadata/_custom_type_script = "uid://dkok2ygnqsmro"
 
