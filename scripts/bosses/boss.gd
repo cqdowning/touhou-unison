@@ -10,6 +10,8 @@ var _attack_timer: Timer
 var _move_timer: Timer
 var _pool_1: Node2D
 
+signal on_attack_end
+
 @onready var P1 : Player = get_tree().get_first_node_in_group("Reimu")
 @onready var P2 : Player = get_tree().get_first_node_in_group("Marisa")
 
@@ -19,7 +21,7 @@ var _pool_1: Node2D
 func _ready() -> void:
 	_attack_timer = Timer.new()
 	add_child(_attack_timer)
-	_attack_timer.one_shot = false
+	_attack_timer.one_shot = true
 	_attack_timer.timeout.connect(attack)
 	_move_timer = Timer.new()
 	add_child(_move_timer)
@@ -30,6 +32,7 @@ func _ready() -> void:
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
 	_spell_cards.append(TestCard.new(self))
+	on_attack_end.connect(_attack_timer.start)
 	hitbox.area_entered.connect(_on_hitbox_entered)
 	begin()
 
@@ -44,16 +47,23 @@ func next_spell():
 	_spell_index += 1
 	_attack_timer.wait_time = _current_spell_card._attack_time
 	_attack_timer.start(_current_spell_card._attack_time)
-	if _current_spell_card._can_move:
+	if _current_spell_card.can_move:
 		_move_timer.start()
 
 func _physics_process(delta: float) -> void:
+<<<<<<< Updated upstream
 	if _current_spell_card._can_move:
 		if abs(_target - self.global_position) > Vector2(0.1,0.1):
 			self.global_position = lerp(self.global_position, _target, _lerp_speed)
 		elif _move_timer.is_stopped():
 			_move_timer.start()
 	pass
+=======
+	if abs(_target - self.global_position) > Vector2(0.1,0.1):
+		self.global_position = lerp(self.global_position, _target, _lerp_speed)
+	elif _move_timer.is_stopped() and _current_spell_card.can_move:
+		_move_timer.start()
+>>>>>>> Stashed changes
 
 func take_damage(dmg:int) -> void:
 	_current_spell_card._health -= dmg
@@ -62,11 +72,13 @@ func take_damage(dmg:int) -> void:
 		
 func attack() -> void:
 	_current_spell_card.attack()
-	_attack_timer.start(_current_spell_card._attack_time)
 	pass
 
 func move() -> void:
-	_target = Vector2(randf_range(50, 800), randf_range(50, 100))
+	_target = Vector2(randf_range(50, 700), randf_range(25, 200))
+
+func move_target(target : Vector2) -> void:
+	_target = target
 
 func end_spell() -> void:
 	if _spell_index > _spell_cards.size():
