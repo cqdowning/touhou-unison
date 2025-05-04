@@ -54,11 +54,6 @@ func _physics_process(delta: float) -> void:
 		elif _move_timer.is_stopped():
 			_move_timer.start()
 	pass
-
-func take_damage(dmg:int) -> void:
-	_current_spell_card._health -= dmg
-	if _current_spell_card._health <= 0:
-		end_spell() 
 		
 func attack() -> void:
 	_current_spell_card.attack()
@@ -108,3 +103,4 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
 		_current_spell_card.damage_card(area.damage)
+		area.expire()

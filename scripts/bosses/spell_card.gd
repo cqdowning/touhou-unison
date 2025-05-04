@@ -2,7 +2,7 @@ class_name SpellCard
 extends Node
 
 var _health: int = 100
-var _time: int = 30
+var _time: float = 30
 var _damage: int = 20
 var _timer: Timer
 var _owner: Boss
@@ -21,6 +21,7 @@ func begin():
 	game_manager.on_new_card.emit(_health)
 
 func attack():
+	game_manager.on_timer_update.emit(_timer.time_left)
 	pass
 func attack1():
 	pass
@@ -73,6 +74,8 @@ func _spread_shot(bullet_count : int, bullet_speed : float, start_angle : float,
 func damage_card(amnt: float):
 	_health -= amnt
 	game_manager.on_boss_health_changed.emit(_health)
+	if _health <= 0:
+		_owner.end_spell() 
 
 func _on_timeout():
-	pass # End the game
+	print("SPELL TIMEOUT")

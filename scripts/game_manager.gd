@@ -8,6 +8,7 @@ signal on_boss_hit
 signal on_player_health_changed
 signal on_boss_health_changed
 signal on_new_card
+signal on_timer_update
 
 func _ready():
 	on_player_hit.connect(_damage_players)

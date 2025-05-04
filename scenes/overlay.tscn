@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://tft5btdqt8ft"]
+[gd_scene load_steps=7 format=3 uid="uid://tft5btdqt8ft"]
 
 [ext_resource type="Script" uid="uid://bbmy7iuc1hym6" path="res://scripts/overlay.gd" id="1_d607a"]
+
+[sub_resource type="Gradient" id="Gradient_d607a"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2eog"]
+gradient = SubResource("Gradient_d607a")
 
 [sub_resource type="Theme" id="Theme_14nai"]
 
@@ -13,6 +18,26 @@ bg_color = Color(1, 0, 0, 1)
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_d607a")
 metadata/_custom_type_script = "uid://bbmy7iuc1hym6"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(977.5, 322)
+scale = Vector2(5.98438, 11.0625)
+texture = SubResource("GradientTexture2D_r2eog")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(275, -749)
+scale = Vector2(148.354, 24.3027)
+texture = SubResource("GradientTexture2D_r2eog")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(576, 1215)
+scale = Vector2(52.3664, 18.8181)
+texture = SubResource("GradientTexture2D_r2eog")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-558, 223)
+scale = Vector2(18.4844, 14.5713)
+texture = SubResource("GradientTexture2D_r2eog")
 
 [node name="BossHealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -41,3 +66,11 @@ theme = SubResource("Theme_14nai")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r2eog")
 value = 50.0
 show_percentage = false
+
+[node name="Time" type="Label" parent="."]
+offset_left = 725.0
+offset_top = 14.0
+offset_right = 765.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 40
+text = "30"

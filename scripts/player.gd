@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var speed: float = 450.0
 @export var focus_speed: float = 250.0
 @export var shoot_rate: int = 4
-@export var shoot_speed: float = 10.0
+@export var shoot_speed: float = 15.0
 @export var shoot_offset: float = 10.0
 
 @export_category("Projectile")
@@ -113,5 +113,7 @@ func add_bullets(pool : Node, count : int) -> Array[ProjectilePlayer]:
 
 func _on_hitbox_entered(area: Area2D):
 	if area is Projectile:
+		print(str("P", player_id, " Hit"))
 		game_manager.on_player_hit.emit(area.damage)
+		area.expire()
 		
