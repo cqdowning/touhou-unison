@@ -8,10 +8,13 @@ func _init(owner: Boss) -> void:
 	can_move = false
 	_attack_time = 0.3
 	super._init(owner)
-	_owner.move_target(Vector2(400, 100))
 	move_time = 5
 	_frame = 1
-	
+
+func begin():
+	_owner.move_target(Vector2(400, 100))
+	super()
+
 func attack():
 	attack1()
 	if _frame % 2 == 0:

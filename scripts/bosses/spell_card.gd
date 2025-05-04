@@ -11,6 +11,8 @@ var can_move : bool = true
 var has_clone : bool = false
 var clone_spawn_position : Vector2
 var move_time : float = 1
+var can_attack : bool = true
+
 const CHARGE : PackedScene = preload("res://scenes/charge_particle.tscn")
 
 func _init(owner: Boss):

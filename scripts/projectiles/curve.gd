@@ -1,7 +1,7 @@
 class_name CurveShot
 extends ProjectileEnemy
 
-var velocity : Vector2
+var velocity : Vector2 = Vector2.ZERO
 var _curve : float
 var time:float
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +21,7 @@ func set_properties(proj_damage: float, proj_speed: float, curve:float = 1) -> v
 	damage = proj_damage
 	speed = proj_speed
 	_curve = curve
-
+	velocity = velocity.normalized() * speed
 
 func launch(spawn_position: Vector2, launch_direction: Vector2) -> void:
 	global_position = spawn_position

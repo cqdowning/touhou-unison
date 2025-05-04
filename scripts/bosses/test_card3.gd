@@ -6,9 +6,12 @@ func _init(owner: Boss) -> void:
 	can_move = true
 	_attack_time = 0.8
 	super._init(owner)
-	_owner.move_target(Vector2(430, 100))
 	move_time = 5
-	
+
+func begin():
+	_owner.move_target(Vector2(430, 100))
+	super()
+
 func attack():
 	game_manager.on_attack_start.emit()
 	_owner._move_timer.paused = true

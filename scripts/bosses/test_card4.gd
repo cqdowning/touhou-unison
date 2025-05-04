@@ -7,10 +7,13 @@ func _init(owner: Boss) -> void:
 	can_move = true
 	_attack_time = 0.8
 	super._init(owner)
-	_owner.move_target(Vector2(430, 100))
 	move_time = 5
 	_curve = 3
-	
+
+func begin():
+	_owner.move_target(Vector2(430, 100))
+	super()
+
 func attack():
 	_burst_curve(64, 6, 0, _owner.global_position, _curve)
 	_curve *= -1

@@ -4,7 +4,7 @@ extends Node2D
 var _spell_cards: Array[SpellCard]
 var _current_spell_card: SpellCard
 var _spell_index: int = 0
-var _lerp_speed: float = 0.1
+var _lerp_speed: float = 0.08
 
 var _attack_timer: Timer
 var _move_timer: Timer
@@ -19,6 +19,7 @@ signal on_attack_end
 
 @onready var P1 : Player = get_tree().get_first_node_in_group("Reimu")
 @onready var P2 : Player = get_tree().get_first_node_in_group("Marisa")
+@onready var sprite : Sprite2D = $Sprite2D
 
 @onready var hitbox: Area2D = $Hitbox
 @onready var _target: Vector2 = self.global_position
@@ -44,8 +45,9 @@ func _ready() -> void:
 	_pool_2 = Node2D.new()
 	add_child(_pool_2)
 	_init_pool(_pool_2, Enums.bullet_types.curved_shot, 64)
-	_spell_cards.append(TestCard2.new(self))
+	_spell_cards.append(TestCard6.new(self))
 	_spell_cards.append(TestCard.new(self))
+	_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard3.new(self))
 	_spell_cards.append(TestCard5.new(self))
@@ -105,6 +107,9 @@ func _spawn_clone(position: Vector2):
 	
 func _despawn_clone():
 	_clone.queue_free()
+
+func move_clone(target: Vector2):
+	_clone.move_target(target)
 
 func _init_pool(pool : Node, bullet_type : Enums.bullet_types, initial : int) -> void:
 	pool.set_as_top_level(true)

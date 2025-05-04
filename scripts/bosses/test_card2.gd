@@ -7,9 +7,12 @@ func _init(owner: Boss) -> void:
 	clone_spawn_position = Vector2(owner.global_position.x + 100, owner.global_position.y)
 	_attack_time = 1
 	super._init(owner)
+
+func begin():
 	_owner._move_timer.stop()
 	_owner.move_target(Vector2(430, 100))
-	
+	super()
+
 func attack():
 	game_manager.on_attack_start.emit()
 	for i in range(0,16):
