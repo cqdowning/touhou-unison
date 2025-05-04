@@ -3,7 +3,7 @@ extends Node
 
 var _health: int = 1000
 var _time: float = 30
-var _damage: int = 20
+var _damage: int = 10
 var _timer: Timer
 var _owner: Boss
 var _attack_time: float = 1
