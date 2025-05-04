@@ -84,6 +84,9 @@ func end_spell() -> void:
 
 func set_invincibile(invincible: bool):
 	_is_invinicible = invincible
+	
+func get_invincibile() -> bool:
+	return _is_invinicible
 
 func _spawn_clone(position: Vector2):
 	_clone = CLONE.instantiate()
