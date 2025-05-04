@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceiia80j105y2"]
+[gd_scene load_steps=4 format=3 uid="uid://ceiia80j105y2"]
 
 [ext_resource type="Script" uid="uid://neeowjsvxghe" path="res://scripts/projectiles/projectile_player.gd" id="1_os7u1"]
+[ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="2_2eg4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os7u1"]
-
-[sub_resource type="Gradient" id="Gradient_bgd68"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2eg4q"]
-gradient = SubResource("Gradient_bgd68")
-width = 16
-height = 16
 
 [node name="MarisaBolt" type="Area2D"]
 collision_layer = 4
@@ -21,4 +15,8 @@ metadata/_custom_type_script = "uid://neeowjsvxghe"
 shape = SubResource("RectangleShape2D_os7u1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_2eg4q")
+texture_filter = 1
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_2eg4q")
+region_enabled = true
+region_rect = Rect2(229, 166, 16, 15)

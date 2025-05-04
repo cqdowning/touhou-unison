@@ -82,6 +82,7 @@ func _shoot():
 			var new_projectile: Projectile = bullets[(i+1)/2]
 			# Set projectile properties
 			new_projectile.set_properties(damage, shoot_speed)
+			new_projectile.spawn()
 			new_projectile.launch(Vector2(self.global_position.x + shoot_offset*i, self.global_position.y - 50), Vector2(0, -1))
 		_shoot_frame = 0
 
