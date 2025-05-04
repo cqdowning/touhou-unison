@@ -77,7 +77,6 @@ func move_target(target : Vector2) -> void:
 	_target = target
 
 func end_spell() -> void:
-<<<<<<< Updated upstream
 	if _current_spell_card.has_clone:
 		_despawn_clone()
 	_attack_timer.stop()
