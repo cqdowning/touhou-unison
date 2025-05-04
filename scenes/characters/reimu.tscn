@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bkob1ov6wu2tx" path="res://scripts/player.gd" id="1_bgd68"]
 [ext_resource type="PackedScene" uid="uid://dthwfr8yibl15" path="res://scenes/projectiles/reimu_ofuda.tscn" id="2_t42ex"]
+[ext_resource type="Texture2D" uid="uid://d3fc6ixx11of7" path="res://sprites/Reimu_Idle.PNG" id="3_0gon4"]
 [ext_resource type="Texture2D" uid="uid://cko0a4wlw5166" path="res://sprites/Player1Hitbox.png" id="3_eka2y"]
-
-[sub_resource type="Gradient" id="Gradient_t42ex"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_t42ex"]
-gradient = SubResource("Gradient_t42ex")
+[ext_resource type="Texture2D" uid="uid://cxjlk0384t7uy" path="res://sprites/Reimu_Move.PNG" id="4_ao8o2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgd68"]
 size = Vector2(55, 59)
@@ -22,10 +19,13 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("1_bgd68")
 projectile = ExtResource("2_t42ex")
+characterSprite_Idle = ExtResource("3_0gon4")
+characterSprite_Move = ExtResource("4_ao8o2")
 metadata/_custom_type_script = "uid://bkob1ov6wu2tx"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_t42ex")
+scale = Vector2(0.120117, 0.120117)
+texture = ExtResource("3_0gon4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9, 0.9)
