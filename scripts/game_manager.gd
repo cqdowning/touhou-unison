@@ -32,7 +32,7 @@ func _attack_end():
 	_is_attacking = false
 
 func start_game():
-	player_health = 100
+	player_health = 100000
 	get_tree().call_deferred("change_scene_to_packed", stage)
 	
 func end_game():

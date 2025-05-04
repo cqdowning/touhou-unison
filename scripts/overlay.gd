@@ -13,7 +13,10 @@ func _ready():
 	
 	player_health_bar.max_value = game_manager.player_health
 	player_health_bar.value = game_manager.player_health
-	
+
+func _physics_process(delta: float) -> void:
+	pass
+
 func _update_boss_health(new_health: int):
 	boss_health_bar.value = new_health
 	

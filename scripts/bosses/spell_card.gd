@@ -21,13 +21,12 @@ func _init(owner: Boss):
 	_owner.add_child(_timer)
 	_timer.one_shot = true
 	_timer.timeout.connect(_on_timeout)
-	
+
 func begin():
 	_timer.start(_time)
 	game_manager.on_new_card.emit(_health)
 
 func attack():
-	game_manager.on_timer_update.emit(_timer.time_left)
 	_owner.on_attack_end.emit(self._attack_time)
 	game_manager.on_attack_end.emit()
 	pass
@@ -114,4 +113,7 @@ func damage_card(amnt: float):
 		_owner.end_spell() 
 
 func _on_timeout():
+	game_manager.on_player_hit.emit(_damage)
+	sound_manager.play_player_hit()
+	_owner.end_spell()
 	print("SPELL TIMEOUT")

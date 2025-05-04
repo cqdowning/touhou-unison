@@ -86,10 +86,12 @@ func _physics_process(delta: float) -> void:
 		elif _target.x < self.global_position.x:
 			_sprite.texture = characterSprite_Move
 			_sprite.flip_h = false
-	elif _move_timer.is_stopped() and _current_spell_card.can_move:
+	else:
 		_sprite.texture = characterSprite_Idle
 		_sprite.flip_h = false
-		_move_timer.start()
+		if _move_timer.is_stopped() and _current_spell_card.can_move:
+			_move_timer.start()
+	game_manager.on_timer_update.emit(_current_spell_card._timer.time_left)
 
 func attack() -> void:
 	_current_spell_card.attack()
