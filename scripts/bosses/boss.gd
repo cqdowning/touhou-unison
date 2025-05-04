@@ -31,6 +31,7 @@ func _ready() -> void:
 	_pool_1 = Node2D.new()
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
+	_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard.new(self))
 	on_attack_end.connect(_attack_timer.start)
 	hitbox.area_entered.connect(_on_hitbox_entered)
@@ -51,25 +52,11 @@ func next_spell():
 		_move_timer.start()
 
 func _physics_process(delta: float) -> void:
-<<<<<<< Updated upstream
-	if _current_spell_card._can_move:
-		if abs(_target - self.global_position) > Vector2(0.1,0.1):
-			self.global_position = lerp(self.global_position, _target, _lerp_speed)
-		elif _move_timer.is_stopped():
-			_move_timer.start()
-	pass
-=======
 	if abs(_target - self.global_position) > Vector2(0.1,0.1):
 		self.global_position = lerp(self.global_position, _target, _lerp_speed)
 	elif _move_timer.is_stopped() and _current_spell_card.can_move:
 		_move_timer.start()
->>>>>>> Stashed changes
 
-func take_damage(dmg:int) -> void:
-	_current_spell_card._health -= dmg
-	if _current_spell_card._health <= 0:
-		end_spell() 
-		
 func attack() -> void:
 	_current_spell_card.attack()
 	pass
@@ -81,8 +68,10 @@ func move_target(target : Vector2) -> void:
 	_target = target
 
 func end_spell() -> void:
-	if _spell_index > _spell_cards.size():
+	if _spell_index < _spell_cards.size():
 		next_spell()
+	else:
+		print("WIN")
 
 func _init_pool(pool : Node, bullet_type : Enums.bullet_types, initial : int) -> void:
 	pool.set_as_top_level(true)
@@ -120,3 +109,4 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
 		_current_spell_card.damage_card(area.damage)
+		area.expire()
