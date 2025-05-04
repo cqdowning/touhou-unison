@@ -83,6 +83,7 @@ func _physics_process(_delta):
 func _shoot():
 	_shoot_frame += 1
 	if _shoot_frame == shoot_rate:
+		sound_manager.play_player_shoot()
 		# Create and setup projectile
 		var bullets : Array[ProjectilePlayer] = get_bullets(2)
 		for i in range(-1, 2, 2):
@@ -122,6 +123,7 @@ func _on_hitbox_entered(area: Area2D):
 	if area is Projectile and _invincible_frames == 0:
 		print(str("P", player_id, " Hit"))
 		game_manager.on_player_hit.emit(area.damage)
+		sound_manager.play_player_hit()
 		area.expire()
 		_invincible_frames = invincible_frames_amount
 		

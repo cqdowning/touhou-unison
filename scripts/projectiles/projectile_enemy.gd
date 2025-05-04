@@ -23,3 +23,4 @@ func spawn(target : int = -1) -> void:
 	is_active = true
 	_despawn_timer.start()
 	self.show()
+	sound_manager.play_enemy_shoot()

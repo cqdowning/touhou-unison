@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 game_manager="*res://scripts/game_manager.gd"
 Enums="*res://scripts/enums.gd"
+sound_manager="*res://scripts/sound_manager.gd"
 
 [display]
 
