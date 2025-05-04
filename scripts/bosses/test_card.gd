@@ -21,4 +21,5 @@ func attack():
 	_target_shot(Enums.players.Marisa, 4, 0)
 	_target_shot(Enums.players.Marisa, 3.5, 0)
 	_target_shot(Enums.players.Marisa, 3, 0)
+	super()
 	
