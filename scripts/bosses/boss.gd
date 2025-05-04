@@ -66,5 +66,4 @@ func end_spell() -> void:
 	
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
-		game_manager.on_boss_hit.emit(area.damage)
 		_current_spell_card.damage_card(area.damage)

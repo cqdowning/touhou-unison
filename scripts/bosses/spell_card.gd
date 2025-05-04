@@ -18,6 +18,7 @@ func _init(owner: Boss):
 	
 func begin():
 	_timer.start(_time)
+	game_manager.on_new_card.emit(_health)
 
 # Called every fixed process frame
 func attack():
@@ -25,7 +26,7 @@ func attack():
 
 func damage_card(amnt: float):
 	_health -= amnt
-	print("Card Health: ", _health)
+	game_manager.on_boss_health_changed.emit(_health)
 
 func _on_timeout():
 	pass # End the game
