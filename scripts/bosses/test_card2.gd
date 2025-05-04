@@ -3,6 +3,8 @@ extends SpellCard
 
 func _init(owner: Boss) -> void:
 	can_move = false
+	has_clone = true
+	clone_spawn_position = Vector2(owner.global_position.x + 100, owner.global_position.y)
 	_attack_time = 1
 	super._init(owner)
 	_owner.move_target(Vector2(430, 100))

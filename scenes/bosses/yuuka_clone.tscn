@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://da8eg3t0w8jlh"]
+[gd_scene load_steps=5 format=3 uid="uid://da8eg3t0w8jlh"]
+
+[ext_resource type="Script" uid="uid://vnpp6eeylwjl" path="res://scripts/bosses/yuuka_clone.gd" id="1_xm4b6"]
 
 [sub_resource type="Gradient" id="Gradient_t42ex"]
 
@@ -9,6 +11,8 @@ gradient = SubResource("Gradient_t42ex")
 size = Vector2(66, 66)
 
 [node name="YuukaClone" type="Node2D"]
+script = ExtResource("1_xm4b6")
+metadata/_custom_type_script = "uid://vnpp6eeylwjl"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_y77ai")

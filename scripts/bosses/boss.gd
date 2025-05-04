@@ -9,6 +9,10 @@ var _lerp_speed: float = 0.1
 var _attack_timer: Timer
 var _move_timer: Timer
 var _pool_1: Node2D
+var _is_invinicible: bool = false
+var _clone: YuukaClone
+
+const CLONE: PackedScene = preload("res://scenes/bosses/yuuka_clone.tscn")
 
 signal on_attack_end
 
@@ -43,6 +47,7 @@ func begin():
 	next_spell()
 	
 func next_spell():
+	_is_invinicible = true
 	_current_spell_card = _spell_cards[_spell_index]
 	_current_spell_card.begin()
 	_spell_index += 1
@@ -50,6 +55,8 @@ func next_spell():
 	_attack_timer.start(_current_spell_card._attack_time)
 	if _current_spell_card.can_move:
 		_move_timer.start()
+	if _current_spell_card.has_clone:
+		_spawn_clone(_current_spell_card.clone_spawn_position)
 
 func _physics_process(delta: float) -> void:
 	if abs(_target - self.global_position) > Vector2(0.1,0.1):
@@ -68,10 +75,24 @@ func move_target(target : Vector2) -> void:
 	_target = target
 
 func end_spell() -> void:
+	if _current_spell_card.has_clone:
+		_despawn_clone()
 	if _spell_index < _spell_cards.size():
 		next_spell()
 	else:
 		print("WIN")
+
+func set_invincibile(invincible: bool):
+	_is_invinicible = invincible
+
+func _spawn_clone(position: Vector2):
+	_clone = CLONE.instantiate()
+	add_child(_clone)
+	_clone.top_level = true
+	_clone.spawn(self, position)
+	
+func _despawn_clone():
+	_clone.queue_free()
 
 func _init_pool(pool : Node, bullet_type : Enums.bullet_types, initial : int) -> void:
 	pool.set_as_top_level(true)
@@ -108,5 +129,6 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 	
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
-		_current_spell_card.damage_card(area.damage)
+		if not _is_invinicible:
+			_current_spell_card.damage_card(area.damage)
 		area.expire()

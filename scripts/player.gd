@@ -124,6 +124,5 @@ func _on_hitbox_entered(area: Area2D):
 		print(str("P", player_id, " Hit"))
 		game_manager.on_player_hit.emit(area.damage)
 		sound_manager.play_player_hit()
-		area.expire()
 		_invincible_frames = invincible_frames_amount
 		

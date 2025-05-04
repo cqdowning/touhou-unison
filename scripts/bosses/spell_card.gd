@@ -8,6 +8,8 @@ var _timer: Timer
 var _owner: Boss
 var _attack_time: float = 1
 var can_move : bool = true
+var has_clone : bool = false
+var clone_spawn_position : Vector2
 const CHARGE : PackedScene = preload("res://scenes/charge_particle.tscn")
 
 func _init(owner: Boss):
@@ -33,6 +35,7 @@ func attack3():
 	pass
 
 func _burst(bullet_count : int, bullet_speed : float, offset : float, spawn_pos : Vector2 = _owner.global_position):
+	_owner.set_invincibile(false)
 	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
 	for i : float in range(0, bullet_count):
 		var temp : ProjectileEnemy = bullet_pool[i]
@@ -42,6 +45,7 @@ func _burst(bullet_count : int, bullet_speed : float, offset : float, spawn_pos 
 		temp.launch(spawn_pos, Vector2.DOWN.rotated(2*PI * (i/bullet_count + offset)))
 
 func _target_shot(target : int, bullet_speed : float, offset : float, spawn_pos : Vector2 = _owner.global_position):
+	_owner.set_invincibile(false)
 	var temp : ProjectileEnemy = _owner.get_bullets(Enums.bullet_types.straight_shot, 1).front()
 	var direction : Vector2
 	match target:
@@ -56,6 +60,7 @@ func _target_shot(target : int, bullet_speed : float, offset : float, spawn_pos 
 	temp.launch(spawn_pos, direction.rotated(2 * PI * offset))
 
 func _spread_shot(bullet_count : int, bullet_speed : float, start_angle : float, end_angle : float, target : int = -1, spawn_pos : Vector2 = _owner.global_position):
+	_owner.set_invincibile(false)
 	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
 	var direction : Vector2
 	match target:
