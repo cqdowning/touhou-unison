@@ -1,8 +1,6 @@
 class_name ProjectileEnemy
 extends Projectile
 
-@onready var P1 : Player
-@onready var P2 : Player
 var sprite
 @onready var eventTimer : Timer
 
@@ -10,7 +8,6 @@ var targetPos : Vector2
 
 func _ready() -> void:
 	for c in self.get_children():
-		print(c.get_class())
 		if c.is_class("Sprite2D"):
 			sprite = c
 			break

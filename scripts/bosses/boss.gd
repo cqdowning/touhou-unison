@@ -10,6 +10,9 @@ var _attack_timer: Timer
 var _move_timer: Timer
 var _pool_1: Node2D
 
+@onready var P1 : Player = get_tree().get_first_node_in_group("Reimu")
+@onready var P2 : Player = get_tree().get_first_node_in_group("Marisa")
+
 @onready var hitbox: Area2D = $Hitbox
 @onready var _target: Vector2 = self.global_position
 

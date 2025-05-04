@@ -24,6 +24,12 @@ Enums="*res://scripts/enums.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+Marisa=""
+Boss=""
+Reimu=""
+
 [input]
 
 p1_up={
