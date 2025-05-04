@@ -9,7 +9,8 @@ var _lerp_speed: float = 0.1
 var _attack_timer: Timer
 var _move_timer: Timer
 var _pool_1: Node2D
-var _is_invinicible: bool = false
+var _pool_2: Node2D
+var _invincible_timer: Timer
 var _clone: YuukaClone
 
 const CLONE: PackedScene = preload("res://scenes/bosses/yuuka_clone.tscn")
@@ -32,9 +33,18 @@ func _ready() -> void:
 	_move_timer.wait_time = 1
 	_move_timer.one_shot = true
 	_move_timer.timeout.connect(move)
+	_invincible_timer = Timer.new()
+	add_child(_invincible_timer)
+	_invincible_timer.wait_time = 1
+	_invincible_timer.one_shot = true
+	_invincible_timer.start()
 	_pool_1 = Node2D.new()
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
+	_pool_2 = Node2D.new()
+	add_child(_pool_2)
+	_init_pool(_pool_2, Enums.bullet_types.curved_shot, 64)
+	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard3.new(self))
 	_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard.new(self))
@@ -48,7 +58,7 @@ func begin():
 	next_spell()
 	
 func next_spell():
-	_is_invinicible = true
+	_invincible_timer.start()
 	_current_spell_card = _spell_cards[_spell_index]
 	_current_spell_card.begin()
 	_spell_index += 1
@@ -86,12 +96,6 @@ func end_spell() -> void:
 	else:
 		print("WIN")
 
-func set_invincibile(invincible: bool):
-	_is_invinicible = invincible
-	
-func get_invincibile() -> bool:
-	return _is_invinicible
-
 func _spawn_clone(position: Vector2):
 	_clone = CLONE.instantiate()
 	add_child(_clone)
@@ -112,6 +116,8 @@ func get_bullets(bullet_type : Enums.bullet_types, count : int) -> Array[Project
 	match bullet_type:
 		Enums.bullet_types.straight_shot:
 			pool = _pool_1
+		Enums.bullet_types.curved_shot:
+			pool = _pool_2
 	for bullet : ProjectileEnemy in pool.get_children():
 		if not bullet.is_active:
 			output.append(bullet)
@@ -127,6 +133,8 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 	match bullet_type:
 		Enums.bullet_types.straight_shot:
 			bullet = load("res://scenes/projectiles/ball.tscn")
+		Enums.bullet_types.curved_shot:
+			bullet = load("res://scenes/projectiles/curve.tscn")
 	for i in range(0, count):
 		var temp : ProjectileEnemy = bullet.instantiate()
 		temp.expire()
@@ -136,6 +144,6 @@ func add_bullets(pool : Node, bullet_type : Enums.bullet_types, count : int) -> 
 	
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
-		if not _is_invinicible:
+		if _invincible_timer.is_stopped():
 			_current_spell_card.damage_card(area.damage)
 		area.expire()

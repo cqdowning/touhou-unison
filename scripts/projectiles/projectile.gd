@@ -25,7 +25,7 @@ func _ready():
 func _physics_process(delta):
 	if is_active:
 		position += direction * speed
-		if (position.x > 1000 or position.x < 0 or position.y < 0 or position.y > 1000):
+		if (position.x > 1000 or position.x < 0 or position.y < 0 or position.y > 800):
 			expire()
 
 

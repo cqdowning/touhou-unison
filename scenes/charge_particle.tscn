@@ -8,7 +8,7 @@ script = ExtResource("1_ns4wg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.996497, 1.00553)
+scale = Vector2(0.996497, 0.999808)
 texture = ExtResource("1_1hudq")
 region_enabled = true
 region_rect = Rect2(231, 434, 30, 30)

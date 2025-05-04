@@ -12,6 +12,7 @@ script = ExtResource("1_os7u1")
 metadata/_custom_type_script = "uid://neeowjsvxghe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.994443, 0.988612)
 shape = SubResource("RectangleShape2D_os7u1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

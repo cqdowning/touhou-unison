@@ -12,6 +12,6 @@ func spawn(owner: Boss, position: Vector2):
 
 func _on_hitbox_entered(area: Area2D):
 	if area is ProjectilePlayer:
-		if not _owner._is_invinicible:
+		if _owner._invincible_timer.is_stopped():
 			_owner._current_spell_card.damage_card(area.damage)
 		area.expire()
