@@ -17,7 +17,7 @@
 collision_layer = 32
 
 [node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 625)
+position = Vector2(19, 766)
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_hpimq")
 

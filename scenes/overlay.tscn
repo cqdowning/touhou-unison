@@ -20,8 +20,8 @@ script = ExtResource("1_d607a")
 metadata/_custom_type_script = "uid://bbmy7iuc1hym6"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(977.5, 322)
-scale = Vector2(5.98438, 11.0625)
+position = Vector2(1005.5, 403)
+scale = Vector2(6.85938, 13.5938)
 texture = SubResource("GradientTexture2D_r2eog")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
@@ -30,13 +30,13 @@ scale = Vector2(148.354, 24.3027)
 texture = SubResource("GradientTexture2D_r2eog")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(576, 1215)
+position = Vector2(576, 1362)
 scale = Vector2(52.3664, 18.8181)
 texture = SubResource("GradientTexture2D_r2eog")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-558, 223)
-scale = Vector2(18.4844, 14.5713)
+position = Vector2(-558, 288.859)
+scale = Vector2(18.4844, 16.6294)
 texture = SubResource("GradientTexture2D_r2eog")
 
 [node name="BossHealthBar" type="ProgressBar" parent="."]
