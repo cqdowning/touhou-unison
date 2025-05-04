@@ -35,6 +35,7 @@ func _ready() -> void:
 	_pool_1 = Node2D.new()
 	add_child(_pool_1)
 	_init_pool(_pool_1, Enums.bullet_types.straight_shot, 64)
+	_spell_cards.append(TestCard3.new(self))
 	_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard.new(self))
 	on_attack_end.connect(_attack_timer.start)
@@ -54,6 +55,7 @@ func next_spell():
 	_attack_timer.wait_time = _current_spell_card._attack_time
 	_attack_timer.start(_current_spell_card._attack_time)
 	if _current_spell_card.can_move:
+		_move_timer.wait_time = _current_spell_card.move_time
 		_move_timer.start()
 	if _current_spell_card.has_clone:
 		_spawn_clone(_current_spell_card.clone_spawn_position)
@@ -75,8 +77,11 @@ func move_target(target : Vector2) -> void:
 	_target = target
 
 func end_spell() -> void:
+<<<<<<< Updated upstream
 	if _current_spell_card.has_clone:
 		_despawn_clone()
+	_attack_timer.stop()
+	_move_timer.stop()
 	if _spell_index < _spell_cards.size():
 		next_spell()
 	else:
