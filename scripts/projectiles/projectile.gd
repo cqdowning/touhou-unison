@@ -15,6 +15,7 @@ func _ready():
 	_despawn_timer = Timer.new()
 	add_child(_despawn_timer)
 	_despawn_timer.one_shot = true
+	_despawn_timer.wait_time = 10
 	_despawn_timer.timeout.connect(_on_despawn_timeout)
 	_despawn_timer.start(lifetime)
 

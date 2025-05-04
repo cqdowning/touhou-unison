@@ -19,9 +19,17 @@ func _init(owner: Boss):
 func begin():
 	_timer.start(_time)
 
-# Called every fixed process frame
 func attack():
 	pass
+
+func _burst(bullet_count : int, bullet_speed : float, offset : float):
+	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
+	for i : float in range(0, bullet_count):
+		var temp : ProjectileEnemy = bullet_pool[i]
+		# Set projectile properties
+		temp.set_properties(_damage, bullet_speed)
+		temp.spawn()
+		temp.launch(_owner.global_position, Vector2.DOWN.rotated(2*PI * (i/bullet_count + offset)))
 
 func _on_timeout():
 	pass # End the game

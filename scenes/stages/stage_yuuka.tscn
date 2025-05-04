@@ -35,9 +35,8 @@ rotation = 3.14159
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_45ahw")
 
-[node name="Yuuka" parent="." node_paths=PackedStringArray("spell_cards") instance=ExtResource("1_hpimq")]
+[node name="Yuuka" parent="." instance=ExtResource("1_hpimq")]
 position = Vector2(566, 51)
-spell_cards = []
 
 [node name="Marisa" parent="." instance=ExtResource("1_0e256")]
 position = Vector2(429, 284)
