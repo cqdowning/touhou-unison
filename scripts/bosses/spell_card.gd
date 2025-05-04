@@ -26,6 +26,9 @@ func attack():
 =======
 	game_manager.on_timer_update.emit(_timer.time_left)
 	_owner.on_attack_end.emit(self._attack_time)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	pass
 func attack1():
