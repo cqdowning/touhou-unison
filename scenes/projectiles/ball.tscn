@@ -12,13 +12,11 @@ collision_mask = 2
 script = ExtResource("1_ornoh")
 metadata/_custom_type_script = "uid://uthly82v3vdf"
 
-[node name="BallSprite" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ornoh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_3vvdo")
 region_enabled = true
 region_rect = Rect2(245, 54, 16, 16)
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ornoh")
