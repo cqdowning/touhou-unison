@@ -10,6 +10,7 @@ var _attack_time: float = 1
 var can_move : bool = true
 var has_clone : bool = false
 var clone_spawn_position : Vector2
+var move_time : float = 1
 const CHARGE : PackedScene = preload("res://scenes/charge_particle.tscn")
 
 func _init(owner: Boss):
@@ -70,13 +71,30 @@ func _spread_shot(bullet_count : int, bullet_speed : float, start_angle : float,
 			direction = _owner.P2.global_position - spawn_pos
 		_:
 			direction = Vector2.DOWN
-	print((end_angle - start_angle) / bullet_count)
 	for i : float in range(0, bullet_count):
 		var temp : ProjectileEnemy = bullet_pool[i]
 		# Set projectile properties
 		temp.set_properties(_damage, bullet_speed)
 		temp.spawn(target)
 		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / bullet_count)))
+
+func _fan_shot(bullet_count : int, bullet_speed : float, start_angle : float, end_angle : float, target : int = -1, spawn_pos : Vector2 = _owner.global_position):
+	var bullet_pool : Array[ProjectileEnemy] = _owner.get_bullets(Enums.bullet_types.straight_shot, bullet_count)
+	var direction : Vector2
+	match target:
+		Enums.players.Reimu:
+			direction = _owner.P1.global_position - spawn_pos
+		Enums.players.Marisa:
+			direction = _owner.P2.global_position - spawn_pos
+		_:
+			direction = Vector2.DOWN
+	for i : float in range(0, bullet_count):
+		var temp : ProjectileEnemy = bullet_pool[i]
+		# Set projectile properties
+		temp.set_properties(_damage, bullet_speed)
+		temp.spawn(target)
+		temp.launch(spawn_pos, direction.rotated(2.0 * PI * (start_angle + (end_angle - start_angle) * i / bullet_count)))
+		await _owner.get_tree().create_timer(0.1).timeout
 
 func damage_card(amnt: float):
 	_health -= amnt
