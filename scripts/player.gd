@@ -31,14 +31,17 @@ func _ready():
 	_pool = Node2D.new()
 	add_child(_pool)
 	_init_pool(_pool, 32)
+	
 
 func _process(delta):
 	_move_input.x = Input.get_action_strength(str("p", player_id, "_right")) - Input.get_action_strength(str("p", player_id, "_left"))
 	_move_input.y = Input.get_action_strength(str("p", player_id, "_down")) - Input.get_action_strength(str("p", player_id, "_up"))
 	
 	_current_speed = speed
+	hitbox.visible = false
 	if Input.is_action_pressed(str("p", player_id, "_focus")):
 		_current_speed = focus_speed
+		hitbox.visible = true
 	
 	if Input.is_action_just_pressed(str("p", player_id, "_shoot")):
 		_shooting = true
