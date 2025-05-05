@@ -43,7 +43,7 @@ shape = SubResource("WorldBoundaryShape2D_45ahw")
 position = Vector2(566, 51)
 
 [node name="Marisa" parent="." instance=ExtResource("1_0e256")]
-position = Vector2(429, 284)
+position = Vector2(648, 649)
 
 [node name="Reimu" parent="." instance=ExtResource("1_gte3d")]
-position = Vector2(727, 277)
+position = Vector2(185, 647)
