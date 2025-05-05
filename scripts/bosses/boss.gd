@@ -51,7 +51,7 @@ func _ready() -> void:
 	_init_pool(_pool_2, Enums.bullet_types.curved_shot, 64)
 	#_spell_cards.append(TestCard.new(self))
 	#_spell_cards.append(TestCard2.new(self))
-	_spell_cards.append(TestCard3.new(self))
+	#_spell_cards.append(TestCard3.new(self))
 	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard5.new(self))
 	_spell_cards.append(TestCard6.new(self))

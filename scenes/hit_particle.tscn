@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddctsdiec72kn"]
 
 [ext_resource type="Script" uid="uid://di41maf0dttw4" path="res://scripts/hit_particle.gd" id="1_si4ve"]
-[ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="2_l506i"]
+[ext_resource type="Texture2D" path="res://sprites/Bullet Sprite Sheet.png" id="2_l506i"]
 
 [node name="HitParticle" type="Node2D"]
 script = ExtResource("1_si4ve")

@@ -35,12 +35,8 @@ func _attack_end():
 	_is_attacking = false
 
 func start_game():
-<<<<<<< Updated upstream
-	#player_health = 100000
 	game_manager.has_won = false
-=======
 	player_health = 200
->>>>>>> Stashed changes
 	get_tree().call_deferred("change_scene_to_packed", stage)
 	
 func end_game():
