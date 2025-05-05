@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bkob1ov6wu2tx" path="res://scripts/player.gd" id="1_w2ddu"]
 [ext_resource type="PackedScene" uid="uid://ceiia80j105y2" path="res://scenes/projectiles/marisa_bolt.tscn" id="2_7ok74"]
-[ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="3_p4c7e"]
 [ext_resource type="Texture2D" uid="uid://diqxtfhtq8i52" path="res://sprites/Player2Hitbox.png" id="4_2gqs3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p4c7e"]
+load_path = "res://.godot/imported/Bullet Sprite Sheet.png-ef246e00395524e2c9879c7c936074ef.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4c7e"]
 size = Vector2(55, 59)
@@ -23,7 +25,7 @@ metadata/_custom_type_script = "uid://bkob1ov6wu2tx"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4.12843, 4.14)
-texture = ExtResource("3_p4c7e")
+texture = SubResource("CompressedTexture2D_p4c7e")
 region_enabled = true
 region_rect = Rect2(213, 167, 16, 14)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dthwfr8yibl15"]
 
 [ext_resource type="Script" uid="uid://neeowjsvxghe" path="res://scripts/projectiles/projectile_player.gd" id="1_v6n4r"]
-[ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="2_a0yyn"]
+[ext_resource type="Texture2D" uid="uid://cwjmhr4prk7s5" path="res://sprites/ofuda.png" id="2_a0yyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6n4r"]
 
@@ -11,12 +11,12 @@ collision_mask = 10
 script = ExtResource("1_v6n4r")
 metadata/_custom_type_script = "uid://neeowjsvxghe"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_v6n4r")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.25, 1.25)
+position = Vector2(-3.8147e-06, 3.8147e-06)
+scale = Vector2(0.328125, 0.328125)
 texture = ExtResource("2_a0yyn")
-region_enabled = true
 region_rect = Rect2(38, 118, 14, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v6n4r")
