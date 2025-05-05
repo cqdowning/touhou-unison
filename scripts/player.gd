@@ -147,7 +147,6 @@ func hit_particles():
 
 func _on_hitbox_entered(area: Area2D):
 	if area is Projectile and _invincible_frames == 0:
-		print(str("P", player_id, " Hit"))
 		#hit_particles()
 		game_manager.on_player_hit.emit(area.damage)
 		sound_manager.play_player_hit()
