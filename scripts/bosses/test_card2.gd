@@ -2,7 +2,7 @@ class_name TestCard2
 extends SpellCard
 
 func _init(owner: Boss) -> void:
-	_health = 4000
+	_health = 3000
 	can_move = false
 	has_clone = false
 	clone_spawn_position = Vector2(owner.global_position.x + 100, owner.global_position.y)
