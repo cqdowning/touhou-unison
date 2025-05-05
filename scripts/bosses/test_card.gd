@@ -2,10 +2,12 @@ class_name TestCard
 extends SpellCard
 
 func _init(owner: Boss) -> void:
+	_damage = 5
 	_attack_time = 1.5
 	super._init(owner)
 	
 func attack():
+	game_manager.on_attack_start.emit()
 	#_burst(16, 8, 0)
 	#_burst(16, 6, 1.0/32)
 	_spread_shot(8, 3, -1.0/16, 1.0/16, Enums.players.Reimu)

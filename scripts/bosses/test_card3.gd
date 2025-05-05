@@ -3,15 +3,16 @@ extends SpellCard
 var offset : float
 var flip : int
 func _init(owner: Boss) -> void:
+	_health = 2500
 	offset = 0
 	can_move = true
 	_attack_time = 0.8
 	super._init(owner)
-	move_time = 5
+	move_time = 3
 	flip = 1
 
 func begin():
-	_owner.move_target(Vector2(430, 100))
+	_owner.move_target(Vector2(430, 150))
 	super()
 
 func attack():

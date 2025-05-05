@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 		elif _target.x < self.global_position.x:
 			_sprite.texture = characterSprite_Move
 			_sprite.flip_h = false
+	else:
+		_sprite.texture = characterSprite_Idle
 
 func move_target(target : Vector2) -> void:
 	_target = target

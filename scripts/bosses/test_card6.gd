@@ -8,7 +8,7 @@ var flip : bool
 func _init(owner: Boss) -> void:
 	flip = false
 	can_attack = false
-	_health = 2500
+	_health = 5000
 	offset = 0
 	can_move = false
 	super._init(owner)
@@ -27,6 +27,7 @@ func begin():
 	attack()
 
 func attack():
+	game_manager.on_attack_start.emit()
 	if can_attack:
 		if flip:
 			_spread_shot(9, 3, -1.0/16, 1.0/16, Enums.players.Reimu, _owner.global_position)

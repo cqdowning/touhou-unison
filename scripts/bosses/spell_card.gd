@@ -1,7 +1,7 @@
 class_name SpellCard
 extends Node
 
-var _health: int = 1000
+var _health: int = 2000
 var _time: float = 30
 var _damage: int = 10
 var _timer: Timer

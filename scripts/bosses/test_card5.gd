@@ -9,20 +9,20 @@ func _init(owner: Boss) -> void:
 	can_move = false
 	_attack_time = 0.3
 	super._init(owner)
-	move_time = 5
 	_frame = 1
 
 func begin():
-	_owner.move_target(Vector2(400, 100))
+	_owner.move_target(Vector2(400, 150))
 	super()
 
 func attack():
+	game_manager.on_attack_start.emit()
 	attack1()
 	if _frame % 2 == 0:
 		offset += _turn_rate
 		if abs(offset) > 0.125:
 			_turn_rate *= -1
-	if _frame % 25 == 0:
+	if _frame % 14 == 0:
 		attack2()
 	_frame += 1
 	super()

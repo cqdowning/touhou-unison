@@ -49,8 +49,8 @@ func _ready() -> void:
 	_pool_2 = Node2D.new()
 	add_child(_pool_2)
 	_init_pool(_pool_2, Enums.bullet_types.curved_shot, 64)
-	_spell_cards.append(TestCard.new(self))
-	_spell_cards.append(TestCard2.new(self))
+	#_spell_cards.append(TestCard.new(self))
+	#_spell_cards.append(TestCard2.new(self))
 	_spell_cards.append(TestCard3.new(self))
 	_spell_cards.append(TestCard4.new(self))
 	_spell_cards.append(TestCard5.new(self))
@@ -88,7 +88,6 @@ func _physics_process(delta: float) -> void:
 			_sprite.flip_h = false
 	else:
 		_sprite.texture = characterSprite_Idle
-		_sprite.flip_h = false
 		if _move_timer.is_stopped() and _current_spell_card.can_move:
 			_move_timer.start()
 	game_manager.on_timer_update.emit(_current_spell_card._timer.time_left)
@@ -108,6 +107,7 @@ func end_spell() -> void:
 		_despawn_clone()
 	_attack_timer.stop()
 	_move_timer.stop()
+	_current_spell_card._timer.stop()
 	if _spell_index < _spell_cards.size():
 		next_spell()
 	else:
