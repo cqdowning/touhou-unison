@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cygvpie0bj3vd"]
+
+[ext_resource type="Script" uid="uid://b2dbry1wswjg8" path="res://scripts/projectiles/curve.gd" id="1_r5djt"]
+[ext_resource type="Texture2D" uid="uid://nmwvtsakrwl" path="res://sprites/bullet.png" id="2_r5djt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ornoh"]
+radius = 7.0
+
+[node name="Curved" type="Area2D"]
+scale = Vector2(1, 0.994572)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_r5djt")
+metadata/_custom_type_script = "uid://uthly82v3vdf"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.326476, 0.325174)
+texture = ExtResource("2_r5djt")
+region_rect = Rect2(245, 38, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ornoh")

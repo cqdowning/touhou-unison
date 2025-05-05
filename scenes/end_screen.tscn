@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://cueuyr2gndm2l"]
+
+[ext_resource type="Script" uid="uid://c65bxads48wgb" path="res://scripts/end_screen.gd" id="1_6e1uj"]
+[ext_resource type="Texture2D" uid="uid://cdy13c57x0b36" path="res://sprites/TouhouUnisonEndScreen.png" id="1_kq7ac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6e1uj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jc7ji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87vmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g44xs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj8vg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plosh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j4el"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wke0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_um0j2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fix67"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qyl73"]
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource("1_6e1uj")
+metadata/_custom_type_script = "uid://c65bxads48wgb"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kq7ac")
+
+[node name="Title" type="Button" parent="."]
+offset_left = 473.0
+offset_top = 389.0
+offset_right = 805.0
+offset_bottom = 571.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6e1uj")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_jc7ji")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_87vmq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_g44xs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vj8vg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_plosh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4j4el")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wke0n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_um0j2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fix67")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qyl73")
+text = "Return to Title"
+icon_alignment = 1
+
+[node name="Report" type="Label" parent="."]
+offset_left = 595.0
+offset_top = 371.0
+offset_right = 678.0
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 20
+text = "You lost!"
+horizontal_alignment = 1

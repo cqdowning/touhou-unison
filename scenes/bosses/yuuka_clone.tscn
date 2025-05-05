@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://da8eg3t0w8jlh"]
+
+[ext_resource type="Script" uid="uid://vnpp6eeylwjl" path="res://scripts/bosses/yuuka_clone.gd" id="1_xm4b6"]
+[ext_resource type="Texture2D" uid="uid://dp78ui0fmyxs1" path="res://sprites/Yuuka_Idle.PNG" id="2_jy00n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm4b6"]
+size = Vector2(106, 122)
+
+[node name="YuukaClone" type="Node2D"]
+script = ExtResource("1_xm4b6")
+characterSprite_Idle = ExtResource("2_jy00n")
+characterSprite_Move = ExtResource("2_jy00n")
+metadata/_custom_type_script = "uid://vnpp6eeylwjl"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_jy00n")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_xm4b6")

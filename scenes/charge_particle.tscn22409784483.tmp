@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ldxh4336jvgt"]
+
+[ext_resource type="Texture2D" uid="uid://dsiuelrdxkxfr" path="res://sprites/Bullet Sprite Sheet.png" id="1_1hudq"]
+[ext_resource type="Script" uid="uid://ddb4yn2b10cfj" path="res://scripts/charge_particle.gd" id="1_ns4wg"]
+
+[node name="ChargeParticle" type="Node2D"]
+script = ExtResource("1_ns4wg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.996497, 1.00553)
+texture = ExtResource("1_1hudq")
+region_enabled = true
+region_rect = Rect2(231, 434, 30, 30)

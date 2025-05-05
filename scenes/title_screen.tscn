@@ -1,0 +1,55 @@
+[gd_scene load_steps=15 format=3 uid="uid://cneffw5k77ncs"]
+
+[ext_resource type="Script" uid="uid://c5k4m47cp8d3f" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://mj47mdvtinsy" path="res://sprites/TouhouUnisonTitle.png" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://cvoipcsngkm87" path="res://sprites/StartButton.png" id="3_s4lrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e54dn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yumr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs5ya"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mykxm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tklts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u26n3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc4i4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib7db"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frs5l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4lrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgrm8"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_sa3yf")
+metadata/_custom_type_script = "uid://c5k4m47cp8d3f"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_s4lrb")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 473.0
+offset_top = 389.0
+offset_right = 805.0
+offset_bottom = 571.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e54dn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3yumr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cs5ya")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mykxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tklts")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_u26n3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dc4i4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ib7db")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_frs5l")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_s4lrb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mgrm8")
+icon = ExtResource("3_s4lrb")
+icon_alignment = 1

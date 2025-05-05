@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://yangtfodnfwn"]
+
+[ext_resource type="Script" uid="uid://bkob1ov6wu2tx" path="res://scripts/player.gd" id="1_bgd68"]
+[ext_resource type="PackedScene" uid="uid://dthwfr8yibl15" path="res://scenes/projectiles/reimu_ofuda.tscn" id="2_t42ex"]
+[ext_resource type="Texture2D" uid="uid://d3fc6ixx11of7" path="res://sprites/Reimu_Idle.PNG" id="3_0gon4"]
+[ext_resource type="Texture2D" uid="uid://cko0a4wlw5166" path="res://sprites/Player1Hitbox.png" id="3_eka2y"]
+[ext_resource type="Texture2D" uid="uid://cxjlk0384t7uy" path="res://sprites/Reimu_Move.PNG" id="4_ao8o2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgd68"]
+size = Vector2(40.8333, 59.1667)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgd68"]
+radius = 6.08276
+
+[node name="Reimu" type="CharacterBody2D" groups=["Reimu"]]
+collision_mask = 32
+motion_mode = 1
+floor_stop_on_slope = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_bgd68")
+speed = 400.0
+focus_speed = 200.0
+projectile = ExtResource("2_t42ex")
+characterSprite_Idle = ExtResource("3_0gon4")
+characterSprite_Move = ExtResource("4_ao8o2")
+metadata/_custom_type_script = "uid://bkob1ov6wu2tx"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0878906, 0.0878906)
+texture = ExtResource("3_0gon4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_bgd68")
+
+[node name="Pushbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pushbox"]
+position = Vector2(-0.5, -0.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_bgd68")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("3_eka2y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_bgd68")
