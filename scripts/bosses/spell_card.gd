@@ -116,5 +116,3 @@ func _on_timeout():
 	game_manager.on_player_hit.emit(_damage)
 	sound_manager.play_player_hit()
 	_owner.end_spell()
-	game_manager.has_won = false
-	game_manager.end_game()
