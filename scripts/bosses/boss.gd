@@ -111,7 +111,8 @@ func end_spell() -> void:
 	if _spell_index < _spell_cards.size():
 		next_spell()
 	else:
-		print("WIN")
+		game_manager.has_won = true
+		game_manager.end_game()
 
 func _spawn_clone(position: Vector2):
 	_clone = CLONE.instantiate()

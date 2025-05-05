@@ -4,7 +4,9 @@ extends Node
 var player_health: int = 100
 var stage: PackedScene = preload("res://scenes/stages/stage_yuuka.tscn")
 var title: PackedScene = preload("res://scenes/title_screen.tscn")
+var end: PackedScene = preload("res://scenes/end_screen.tscn")
 var _is_attacking : bool = false
+var has_won = false
 
 signal on_player_hit
 signal on_boss_hit
@@ -24,6 +26,7 @@ func _damage_players(damage: int):
 	player_health -= damage
 	on_player_health_changed.emit(player_health)
 	if player_health <= 0:
+		game_manager.has_won = false
 		end_game()
 
 func _attack_start():
@@ -32,10 +35,14 @@ func _attack_end():
 	_is_attacking = false
 
 func start_game():
-	player_health = 100000
+	#player_health = 100000
+	game_manager.has_won = false
 	get_tree().call_deferred("change_scene_to_packed", stage)
 	
 func end_game():
 	if _is_attacking:
 		await on_attack_end
+	get_tree().call_deferred("change_scene_to_packed", end)
+	
+func go_to_title():
 	get_tree().call_deferred("change_scene_to_packed", title)

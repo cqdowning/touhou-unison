@@ -12,4 +12,3 @@ func _process(delta):
 	
 func _start_game():
 	game_manager.start_game()
-	
