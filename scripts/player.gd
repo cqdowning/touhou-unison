@@ -55,7 +55,6 @@ func _process(delta):
 		sprite.flip_h = false
 	else:
 		sprite.texture = characterSprite_Idle
-		sprite.flip_h = false
 	
 	if Input.is_action_pressed(str("p", player_id, "_focus")):
 		_current_speed = focus_speed

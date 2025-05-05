@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6j0eaks5qiqp"]
+[gd_scene load_steps=8 format=3 uid="uid://6j0eaks5qiqp"]
 
 [ext_resource type="Script" uid="uid://bkob1ov6wu2tx" path="res://scripts/player.gd" id="1_w2ddu"]
 [ext_resource type="PackedScene" uid="uid://ceiia80j105y2" path="res://scenes/projectiles/marisa_bolt.tscn" id="2_7ok74"]
 [ext_resource type="Texture2D" uid="uid://c0y7jv5n44grx" path="res://sprites/Marisa_Idle.PNG" id="3_2gqs3"]
 [ext_resource type="Texture2D" uid="uid://diqxtfhtq8i52" path="res://sprites/Player2Hitbox.png" id="4_2gqs3"]
+[ext_resource type="Texture2D" uid="uid://1ey5v3rmwu1k" path="res://sprites/Marisa_Move.PNG" id="4_g4p5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4c7e"]
 size = Vector2(41.6667, 66.6667)
@@ -22,7 +23,7 @@ speed = 500.0
 focus_speed = 300.0
 projectile = ExtResource("2_7ok74")
 characterSprite_Idle = ExtResource("3_2gqs3")
-characterSprite_Move = ExtResource("3_2gqs3")
+characterSprite_Move = ExtResource("4_g4p5f")
 metadata/_custom_type_script = "uid://bkob1ov6wu2tx"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
