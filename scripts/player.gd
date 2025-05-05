@@ -20,8 +20,6 @@ extends CharacterBody2D
 @export var characterSprite_Idle : Texture2D
 @export var characterSprite_Move : Texture2D
 
-const HIT : PackedScene = preload("res://scenes/hit_particle.tscn")
-
 var _shooting: bool = false
 var _shoot_frame: int = 0
 var _current_speed: float = 0
@@ -139,15 +137,8 @@ func add_bullets(pool : Node, count : int) -> Array[ProjectilePlayer]:
 		output.append(temp)
 	return output
 
-func hit_particles():
-	for i in range(0,16):
-		var particle = HIT.instantiate()
-		add_child(particle)
-		particle.global_position = self.global_position
-
 func _on_hitbox_entered(area: Area2D):
 	if area is Projectile and _invincible_frames == 0:
-		#hit_particles()
 		game_manager.on_player_hit.emit(area.damage)
 		sound_manager.play_player_hit()
 		_invincible_frames = invincible_frames_amount
